@@ -15,12 +15,8 @@ class Solution {
         }
 
         for(int i=0; i<len-1; i++) {
-            for(int j=i+1; j<len; j++) {
-
-                if(arr[j] - arr[i] == min) result.add(Arrays.asList(arr[i],arr[j]));
-
-                if(arr[j] - arr[i] > min) break;
-            }
+            
+            if(arr[i+1] - arr[i] == min) result.add(Arrays.asList(arr[i], arr[i+1]));
         }
 
         return result;
