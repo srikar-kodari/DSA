@@ -9,27 +9,19 @@
  * }
  */
 class Solution {
-    public ListNode middleNode(ListNode head) {
+    public ListNode middleNode(ListNode head) {     // Two Pointer
 
         if(head == null || head.next == null) return head;
 
-        ListNode temp = head;
-        int count = 0;
-        while (temp != null) {
-            count++;
-            temp = temp.next;
+        ListNode a = head;
+        ListNode b = head;
+
+        while(b != null && b.next != null) {
+
+            a = a.next;
+            b = b.next.next;
         }
 
-        temp = head;
-        int cnt = 0;
-        while (temp != null) {
-            cnt++;
-            if(cnt == count/2) {
-                break;
-            }
-            temp = temp.next;
-        }
-        
-        return temp.next;
+        return a;
     }
 }
