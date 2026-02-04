@@ -14,17 +14,17 @@ public class Solution {
 
         if(head == null || head.next == null) return false;
 
-        Map<ListNode, Integer> map = new HashMap<>();
+        ListNode fast = head; // The 2 pointers will definitely meet if there is a cycle.
+        ListNode slow = head;
 
-        ListNode temp = head;
-        while(temp != null) {
-            if(map.containsKey(temp)) return true;
+        while(fast != null && fast.next != null) {
 
-            else {
-                map.put(temp, 1);
-                temp = temp.next;
-            }
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(fast == slow) return true;
         }
+
         return false;
     }
 }
