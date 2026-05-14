@@ -1,0 +1,23 @@
+class Solution {
+    public int hIndex(int[] citations) {
+
+        int n = citations.length;
+        int left = 0;
+        int right = n-1;
+        int result = n;
+
+        while(left <= right) {
+
+            int mid = left + (right - left)/2;
+            int papers = n - mid;
+
+            if(citations[mid] >= papers) {
+                result = mid;
+                right = mid - 1;
+            }
+            else left = mid + 1;
+        }
+
+        return n - result;
+    }
+}
